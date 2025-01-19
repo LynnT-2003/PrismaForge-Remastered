@@ -28,7 +28,7 @@ const TemplatesPage = () => {
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <h1 className="px-12 mt-4 mb-4 text-4xl md:text-5xl text-center font-bold font-sans relative bg-clip-text text-transparent bg-no-repeat bg-gradient-to-r from-purple-500 via-violet-500 to-pink-500 pb-4">
+      <h1 className="px-12 my-4 md:my-8 text-4xl md:text-5xl text-center font-bold font-sans relative bg-clip-text text-transparent bg-no-repeat bg-gradient-to-r from-purple-500 via-violet-500 to-pink-500 pb-4">
         Generative AI Templates
       </h1>
       <div className="flex flex-wrap justify-center gap-4 w-full">

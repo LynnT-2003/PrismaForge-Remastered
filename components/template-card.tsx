@@ -38,7 +38,7 @@ export function TemplateCard({
             <h1 className="font-bold font-sans mb-2 text-md md:text-lg 2xl:text-xl">
               {title}
             </h1>
-            <h1 className="font-sans text-sm md:text-lg line-clamp-3 2xl:line-clamp-4">
+            <h1 className="font-sans text-sm md:text-md line-clamp-4 2xl:line-clamp-4">
               {subtitle}
             </h1>
             <Button
