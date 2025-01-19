@@ -21,7 +21,7 @@ export function TemplateCard({
 }: TemplateCardProps) {
   const router = useRouter();
   return (
-    <div className="bg-[#181818] w-[35vw] xxl:w-[25vw] rounded-lg border-white/[0.1] border">
+    <div className="bg-[#181818] w-[90vw] md:w-[35vw] xxl:w-[25vw] rounded-lg border-white/[0.1] border">
       <div className="px-5 flex space-x-7 h-full mr-4">
         <div className="w-[40%] min-h-[150px] my-5 flex items-center aspect-square relative">
           <Image
@@ -35,15 +35,15 @@ export function TemplateCard({
 
         <div className="w-[60%] pt-5 pb-4 my-1 flex flex-col">
           <div className="h-full flex flex-col">
-            <h1 className="font-bold font-sans mb-2 text-lg 2xl:text-xl">
+            <h1 className="font-bold font-sans mb-2 text-md md:text-lg 2xl:text-xl">
               {title}
             </h1>
-            <h1 className="font-sans text-lg line-clamp-3 2xl:line-clamp-4">
+            <h1 className="font-sans text-sm md:text-lg line-clamp-3 2xl:line-clamp-4">
               {subtitle}
             </h1>
             <Button
               size="sm"
-              className="mt-auto"
+              className="mt-4 md:mt-auto"
               onClick={() => router.push(route)}
             >
               Try it out <ArrowRight className="w-3 h-5 ml-2" />

@@ -199,18 +199,7 @@ export function AppSidebar() {
                           className="text-lg space-x-2"
                         >
                           <a>
-                            <span className="text-base ml-7">Templates</span>
-                          </a>
-                        </SidebarMenuButton>
-                      </SidebarMenuItem>
-
-                      <SidebarMenuItem className="my-2 py-1 hover:cursor-pointer transition-all duration-150 ease-linear">
-                        <SidebarMenuButton
-                          asChild
-                          className="text-lg space-x-2"
-                        >
-                          <a href={""}>
-                            <span className="text-base ml-7">Favorites</span>
+                            <span className="text-base ml-7">Models</span>
                           </a>
                         </SidebarMenuButton>
                       </SidebarMenuItem>
@@ -222,9 +211,18 @@ export function AppSidebar() {
                           onClick={() => router.push("/history")}
                         >
                           <a>
-                            <span className="text-base ml-7">
-                              Image History
-                            </span>
+                            <span className="text-base ml-7">History</span>
+                          </a>
+                        </SidebarMenuButton>
+                      </SidebarMenuItem>
+
+                      <SidebarMenuItem className="my-2 py-1 hover:cursor-pointer transition-all duration-150 ease-linear">
+                        <SidebarMenuButton
+                          asChild
+                          className="text-lg space-x-2"
+                        >
+                          <a href={""}>
+                            <span className="text-base ml-7">Favorites</span>
                           </a>
                         </SidebarMenuButton>
                       </SidebarMenuItem>
