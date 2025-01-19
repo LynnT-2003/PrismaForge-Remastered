@@ -701,7 +701,7 @@ const InputSection: React.FC<InputSectionProps> = ({ onNewImage }) => {
           <div
             className="flex flex-col items-center justify-center group"
             onClick={() => {
-              router.push("/templates");
+              router.push("/models");
             }}
           >
             <img

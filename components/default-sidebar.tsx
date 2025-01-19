@@ -192,7 +192,7 @@ export function AppSidebar() {
                     <div className="mb-1">
                       <SidebarMenuItem
                         className="my-2 py-1 hover:cursor-pointer transition-all duration-150 ease-linear"
-                        onClick={() => router.push("/templates")}
+                        onClick={() => router.push("/models")}
                       >
                         <SidebarMenuButton
                           asChild

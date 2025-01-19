@@ -944,14 +944,14 @@ const Sidebar = React.forwardRef<
     const pathname = usePathname();
 
     const getSidebarColors = (pathname: string) => {
-      if (pathname === "/templates/cartoon") {
+      if (pathname === "/models/cartoon") {
         return {
           backgroundColor: "bg-blue-500", // Example for /models route
           textColor: "text-white",
         };
       }
 
-      if (pathname === "/templates/christmas") {
+      if (pathname === "/models/christmas") {
         return {
           backgroundColor: "bg-red-800", // Christmas route
           textColor: "text-white",
@@ -984,24 +984,56 @@ const Sidebar = React.forwardRef<
       ? getSidebarColors(model)
       : sidebarColors; // Use the state for colors
 
+    if (collapsible === "none") {
+      return (
+        <div
+          className={cn(
+            "flex h-full w-[[--sidebar-width]] flex-col bg-blue-500 z-50 text-sidebar-foreground",
+            className
+          )}
+          ref={ref}
+          {...props}
+        >
+          {children}
+        </div>
+      );
+    }
+
+    if (isMobile) {
+      return (
+        <Sheet open={openMobile} onOpenChange={setOpenMobile} {...props}>
+          <SheetContent
+            data-sidebar="sidebar"
+            data-mobile="true"
+            className="w-[--sidebar-width] bg-sidebar p-0 text-sidebar-foreground [&>button]:hidden"
+            style={
+              {
+                "--sidebar-width": SIDEBAR_WIDTH_MOBILE,
+              } as React.CSSProperties
+            }
+            side={side}
+          >
+            <div className="flex h-full w-full flex-col">{children}</div>
+          </SheetContent>
+        </Sheet>
+      );
+    }
+
     return (
       <div
         ref={ref}
-        className={cn(
-          "group peer hidden md:block",
-          textColor,
-          "text-sidebar-foreground"
-        )}
+        className="group peer hidden md:block text-sidebar-foreground"
         data-state={state}
         data-collapsible={state === "collapsed" ? collapsible : ""}
         data-variant={variant}
         data-side={side}
       >
-        {/* Sidebar gap handling on desktop */}
+        {/* This is what handles the sidebar gap on desktop */}
         <div
           className={cn(
             "duration-200 relative h-svh w-[--sidebar-width] bg-transparent transition-[width] ease-linear",
-
+            "group-data-[collapsible=offcanvas]:w-0",
+            "group-data-[side=right]:rotate-180",
             variant === "floating" || variant === "inset"
               ? "group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)_+_theme(spacing.4))]"
               : "group-data-[collapsible=icon]:w-[--sidebar-width-icon]"
@@ -1013,9 +1045,10 @@ const Sidebar = React.forwardRef<
             side === "left"
               ? "left-0 group-data-[collapsible=offcanvas]:left-[calc(var(--sidebar-width)*-1)]"
               : "right-0 group-data-[collapsible=offcanvas]:right-[calc(var(--sidebar-width)*-1)]",
+            // Adjust the padding for floating and inset variants.
             variant === "floating" || variant === "inset"
               ? "p-2 group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)_+_theme(spacing.4)_+2px)]"
-              : "group-data-[collapsible=icon]:w-[--sidebar-width-icon]",
+              : "group-data-[collapsible=icon]:w-[--sidebar-width-icon] group-data-[side=right]:border-l border-white",
             className
           )}
           {...props}
