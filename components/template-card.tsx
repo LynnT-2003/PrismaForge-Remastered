@@ -35,10 +35,10 @@ export function TemplateCard({
 
         <div className="w-[60%] pt-5 pb-4 my-1 flex flex-col">
           <div className="h-full flex flex-col">
-            <h1 className="font-bold font-sans mb-2 text-md md:text-lg 2xl:text-xl">
+            <h1 className="font-bold font-sans mb-2 text-md 2xl:text-2xl">
               {title}
             </h1>
-            <h1 className="font-sans text-sm md:text-md line-clamp-4 2xl:line-clamp-4">
+            <h1 className="font-sans text-sm 2xl:text-xl 2xl:pt-4 line-clamp-4 2xl:line-clamp-4">
               {subtitle}
             </h1>
             <Button
