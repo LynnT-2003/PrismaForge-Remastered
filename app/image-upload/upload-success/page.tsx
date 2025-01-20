@@ -37,9 +37,17 @@ const UploadSuccessScreen = () => {
   const [base64String, setBase64String] = useState<string | null>(null);
   const [generatedImage, setGeneratedImage] = useState<string | null>(null);
   const [isCopied, setIsCopied] = useState(false);
+  const [model, setModel] = useState<string>("");
 
-  const model: string = localStorage.getItem("model")!;
-  console.log("Model:", model);
+  useEffect(() => {
+    // Check `localStorage` after component mounts
+    const storedModel = localStorage.getItem("model")!;
+    if (storedModel) {
+      setModel(storedModel);
+    } else {
+      console.error("Model key not found in localStorage");
+    }
+  }, []);
 
   useEffect(() => {
     if (typeof window !== "undefined") {

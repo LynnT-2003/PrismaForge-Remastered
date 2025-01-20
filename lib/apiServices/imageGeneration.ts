@@ -1057,5 +1057,7 @@ export const buildRequestBody = (model: string, base64Image: string | null) => {
       };
     }
   } else if (model === "cartoon") {
+  } else {
+    console.error("Invalid model type");
   }
 };
