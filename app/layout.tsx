@@ -95,10 +95,10 @@ export default function RootLayout({
                 /> */}
                 <MobileSidebarItem
                   icon={<Image />}
-                  text="Media"
+                  text="Models"
                   active={false}
                   alert={false}
-                  route={"/Test"}
+                  route={"/models"}
                   onClick={""}
                 />
                 {/* <MobileSidebarItem

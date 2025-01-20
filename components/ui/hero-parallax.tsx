@@ -74,40 +74,50 @@ export const HeroParallax = ({
   const thirdRow = imagesStatic.slice(10, 15);
 
   return (
-    <div
-      ref={ref}
-      className="w-screen h-[2600px] py-40 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
-    >
-      <Header />
-      <motion.div
-        style={{
-          rotateX,
-          rotateZ,
-          translateY,
-          opacity,
-        }}
-        className=""
+    <div>
+      <div
+        ref={ref}
+        className="hidden md:flex w-screen h-[2600px] py-40 overflow-hidden antialiased relative flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
       >
-        <motion.div className="flex flex-row-reverse space-x-reverse space-x-20 mb-20">
-          {firstRow.map((product, index) => (
-            <ProductCard product={product} translate={translateX} key={index} />
-          ))}
+        <Header />
+        <motion.div
+          style={{
+            rotateX,
+            rotateZ,
+            translateY,
+            opacity,
+          }}
+          className=""
+        >
+          <motion.div className="flex flex-row-reverse space-x-reverse space-x-20 mb-20">
+            {firstRow.map((product, index) => (
+              <ProductCard
+                product={product}
+                translate={translateX}
+                key={index}
+              />
+            ))}
+          </motion.div>
+          <motion.div className="flex flex-row mb-20 space-x-20">
+            {secondRow.map((product, index) => (
+              <ProductCard
+                product={product}
+                translate={translateXReverse}
+                key={index}
+              />
+            ))}
+          </motion.div>
+          <motion.div className="flex flex-row-reverse space-x-reverse space-x-20">
+            {thirdRow.map((product, index) => (
+              <ProductCard
+                product={product}
+                translate={translateX}
+                key={index}
+              />
+            ))}
+          </motion.div>
         </motion.div>
-        <motion.div className="flex flex-row mb-20 space-x-20">
-          {secondRow.map((product, index) => (
-            <ProductCard
-              product={product}
-              translate={translateXReverse}
-              key={index}
-            />
-          ))}
-        </motion.div>
-        <motion.div className="flex flex-row-reverse space-x-reverse space-x-20">
-          {thirdRow.map((product, index) => (
-            <ProductCard product={product} translate={translateX} key={index} />
-          ))}
-        </motion.div>
-      </motion.div>
+      </div>
     </div>
   );
 };

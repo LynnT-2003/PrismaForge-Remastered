@@ -564,12 +564,12 @@ const InputSection: React.FC<InputSectionProps> = ({ onNewImage }) => {
   };
 
   return (
-    <div className="w-full h-screen flex flex-col items-center justify-center">
+    <div className="w-full md:h-screen flex flex-col items-center justify-center">
       {!image ? (
         <div className="">
           <div
             id="create"
-            className="text-6xl text-center font-bold font-sans relative bg-clip-text text-transparent bg-no-repeat bg-gradient-to-r from-purple-500 via-violet-500 to-pink-500 pb-4"
+            className="px-16 md:px-0 text-4xl md:text-6xl text-center font-bold font-sans relative bg-clip-text text-transparent bg-no-repeat bg-gradient-to-r from-purple-500 via-violet-500 to-pink-500 pb-4"
           >
             <div className="">Start Creating Your Own !</div>
           </div>
@@ -693,7 +693,7 @@ const InputSection: React.FC<InputSectionProps> = ({ onNewImage }) => {
 
       {/* Display loading progress bar */}
 
-      <div className="w-full mx-24 mt-12 ">
+      <div className="w-full px-12 md:px-0 md:mt-12">
         <div
           id="options"
           className="flex gap-12 mt-4 items-center justify-center"
@@ -709,7 +709,7 @@ const InputSection: React.FC<InputSectionProps> = ({ onNewImage }) => {
               alt="logo"
               className="w-[500px] grayscale opacity-75 group-hover:opacity-100 group-hover:grayscale-0 transition duration-300 ease-in-out"
             />
-            <h1 className="text-center mt-6 text-2xl font-bold  group-hover:bg-clip-text group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-green-300 group-hover:via-cyan-500 group-hover:to-blue-300 transition duration-300 ease-in-out">
+            <h1 className="text-center mt-6 text-lg md:text-2xl font-bold group-hover:bg-clip-text group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-green-300 group-hover:via-cyan-500 group-hover:to-blue-300 transition duration-300 ease-in-out">
               Go to Templates
             </h1>
           </div>
@@ -725,7 +725,7 @@ const InputSection: React.FC<InputSectionProps> = ({ onNewImage }) => {
               alt="logo"
               className="w-[500px] grayscale opacity-75 group-hover:opacity-100 group-hover:grayscale-0 transition duration-300 ease-in-out"
             />
-            <h1 className="text-center mt-6 text-2xl font-bold group-hover:bg-clip-text group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-purple-500 group-hover:via-violet-500 group-hover:to-pink-500 transition duration-300 ease-in-out">
+            <h1 className="text-center mt-6 text-lg md:text-2xl font-bold group-hover:bg-clip-text group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-purple-500 group-hover:via-violet-500 group-hover:to-pink-500 transition duration-300 ease-in-out">
               Create a Prompt
             </h1>
           </div>
