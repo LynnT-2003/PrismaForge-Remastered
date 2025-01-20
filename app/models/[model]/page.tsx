@@ -39,13 +39,14 @@ export default function ModelDetailPage({
     };
   }, [isCameraOpen]);
 
-  const handleCapture = () => {
+  const handleCapture = (model: string) => {
     console.log("Camera clicked");
     if (webcamRef.current) {
       const imageSrc = webcamRef.current.getScreenshot();
       if (imageSrc) {
         // setFile(imageSrc); // Set the captured image as the file
         localStorage.setItem("uploadedFile", imageSrc);
+        localStorage.setItem("model", model);
         console.log("Captured Image: ", imageSrc);
         setIsCameraOpen(false);
         router.push("/image-upload/upload-success");
@@ -197,7 +198,7 @@ export default function ModelDetailPage({
             </Button>
             <div className="w-1/3 h-full flex items-center justify-center z-99">
               <Button
-                onClick={handleCapture}
+                onClick={() => handleCapture(model)}
                 className="p-[1.5rem] rounded-full aspect-square bg-gray-100 border-gray-300 border-[0.2rem] sm:border-[0.3rem] hover:bg-white"
                 variant={"ghost"}
               ></Button>
