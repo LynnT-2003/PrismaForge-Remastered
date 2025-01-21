@@ -83,13 +83,14 @@ export default function Home() {
           <HeroSection images={images} />
         </div>
 
+        <div></div>
         <div className="md:hidden">
-          <div className="motion-preset-slide-right motion-duration-1500 px-[8vw] bg-[#111111] text-center relative py-20 md:py-20 w-full left-0 top-0">
+          <div className="motion-preset-slide-right motion-duration-1500 px-[8vw] text-center relative py-20 md:py-20 w-full left-0 top-0">
             <h1 className="text-2xl md:text-7xl font-bold dark:text-white">
               The Ultimate Studio for
               <br /> AI Image Generation
             </h1>
-            <p className="max-w-2xl text-base md:text-xl mt-8 dark:text-neutral-200">
+            <p className="max-w-2xl text-sm md:text-xl mt-8 dark:text-neutral-200">
               Create stunning, custom images with just a few clicks. Enter your
               prompt, customize settings, and let our advanced AI generate
               high-quality visuals instantly. Perfect for designers, developers,
@@ -98,7 +99,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="md:pt-[2640px] pt-20">
+        <div className="md:pt-[2640px] pt-0">
           <InputSection onNewImage={handleNewImage} />
         </div>
       </div>
