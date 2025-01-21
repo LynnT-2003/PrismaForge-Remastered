@@ -24,6 +24,13 @@ const TemplatesPage = () => {
       subtitle:
         "Get fun, personalized fortune readings in seconds. Upload your photo to reveal mystical insights with colorful illustrations and cosmic designs.",
     },
+    {
+      title: "Style your Hair",
+      thumbnail: "/templates/hair.jpg",
+      route: "/models/fortune",
+      subtitle:
+        "Get fun, personalized fortune readings in seconds. Upload your photo to reveal mystical insights with colorful illustrations and cosmic designs.",
+    },
   ];
 
   return (
