@@ -108,7 +108,7 @@ const UploadSuccessScreen = () => {
 
   const handleOnClickRetakePhoto = () => {
     localStorage.removeItem("uploadedFile");
-    router.push("/image-upload");
+    router.push("/models/styleforge");
   };
 
   const handleOnClickReselectStyle = () => {
@@ -240,7 +240,7 @@ const UploadSuccessScreen = () => {
             <h1 className="text-center font-sans font-semibold text-2xl">
               {generationError === true
                 ? "Image Generation Failed"
-                : "Image Uploaded Successfully"}
+                : "Your Image is Ready to Transform"}
             </h1>
             {generationError === true && (
               <h1 className="text-center text-red-400 px-12 mt-4">

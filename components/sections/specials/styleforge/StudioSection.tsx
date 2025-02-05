@@ -1,11 +1,21 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { hairstyles } from "@/constants/styleforge";
 
 const StudioSection = () => {
   const router = useRouter();
 
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const storedFile = localStorage.getItem("uploadedFile") || "";
+      const styleRef = localStorage.getItem("styleRefUrl");
+
+      if (storedFile && styleRef) {
+        router.push("/special/styleforge/upload-success");
+      }
+    }
+  }, []);
   const handleStyleClicked = (styleRefUrl: string) => {
     console.log(styleRefUrl);
     localStorage.setItem("styleRefUrl", styleRefUrl);
