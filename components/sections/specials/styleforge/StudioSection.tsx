@@ -10,8 +10,9 @@ const StudioSection = () => {
     if (typeof window !== "undefined") {
       const storedFile = localStorage.getItem("uploadedFile") || "";
       const styleRef = localStorage.getItem("styleRefUrl");
+      const model = localStorage.getItem("model");
 
-      if (storedFile && styleRef) {
+      if (model && storedFile && styleRef) {
         router.push("/special/styleforge/upload-success");
       }
     }

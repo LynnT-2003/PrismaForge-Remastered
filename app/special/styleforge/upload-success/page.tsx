@@ -113,7 +113,7 @@ const UploadSuccessScreen = () => {
 
   const handleOnClickReselectStyle = () => {
     localStorage.removeItem("styleRefUrl");
-    router.push("/studio");
+    router.push("/special/styleforge");
   };
 
   const handleOnClickContinue = async () => {

@@ -1,8 +1,13 @@
 "use client";
+import { useEffect } from "react";
 import { models } from "@/constants/models";
 import { TemplateCard } from "@/components/template-card";
 
 const TemplatesPage = () => {
+  useEffect(() => {
+    localStorage.removeItem("model");
+  });
+
   return (
     <div className="flex flex-col items-center justify-center">
       <h1 className="px-12 my-5 md:my-8 text-4xl md:text-5xl text-center font-bold font-sans relative bg-clip-text text-transparent bg-no-repeat bg-gradient-to-r from-purple-500 via-violet-500 to-pink-500 pb-4">
