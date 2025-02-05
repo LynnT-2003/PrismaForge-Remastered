@@ -5,7 +5,8 @@ import { TemplateCard } from "@/components/template-card";
 
 const TemplatesPage = () => {
   useEffect(() => {
-    localStorage.removeItem("model");
+    // localStorage.removeItem("model");
+    localStorage.clear();
   });
 
   return (
