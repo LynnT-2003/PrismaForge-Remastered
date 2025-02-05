@@ -11,6 +11,7 @@ const TemplatesPage = () => {
       <div className="flex flex-wrap justify-center gap-4 w-full max-w-[1500px]">
         {models.map((model, index) => (
           <TemplateCard
+            key={index}
             title={model.title}
             thumbnail={model.thumbnail}
             subtitle={model.subtitle}
