@@ -21,7 +21,7 @@ export function TemplateCard({
 }: TemplateCardProps) {
   const router = useRouter();
   return (
-    <div className="bg-[#181818] w-[90vw] md:w-[35vw] xxl:w-[25vw] rounded-lg border-white/[0.1] border">
+    <div className="bg-[#181818] w-[90vw] md:w-[35%] rounded-lg border-white/[0.1] border">
       <div className="px-5 flex space-x-7 h-full mr-4">
         <div className="w-[40%] min-h-[150px] my-5 flex items-center aspect-square relative">
           <Image
@@ -35,10 +35,8 @@ export function TemplateCard({
 
         <div className="w-[60%] pt-5 pb-4 my-1 flex flex-col">
           <div className="h-full flex flex-col">
-            <h1 className="font-bold font-sans mb-2 text-md 2xl:text-2xl">
-              {title}
-            </h1>
-            <h1 className="font-sans text-sm 2xl:text-xl 2xl:pt-4 line-clamp-4 2xl:line-clamp-4">
+            <h1 className="font-bold font-sans mb-0 text-base">{title}</h1>
+            <h1 className="font-sans text-base py-4 line-clamp-5">
               {subtitle}
             </h1>
             <Button

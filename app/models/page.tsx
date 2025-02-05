@@ -27,7 +27,7 @@ const TemplatesPage = () => {
     {
       title: "Style your Hair",
       thumbnail: "/templates/hair.jpg",
-      route: "/models/fortune",
+      route: "/models/hairstyle",
       subtitle:
         "Get fun, personalized fortune readings in seconds. Upload your photo to reveal mystical insights with colorful illustrations and cosmic designs.",
     },
@@ -38,16 +38,14 @@ const TemplatesPage = () => {
       <h1 className="px-12 my-5 md:my-8 text-4xl md:text-5xl text-center font-bold font-sans relative bg-clip-text text-transparent bg-no-repeat bg-gradient-to-r from-purple-500 via-violet-500 to-pink-500 pb-4">
         Generative AI Templates
       </h1>
-      <div className="flex flex-wrap justify-center gap-4 w-full">
+      <div className="flex flex-wrap justify-center gap-4 w-full max-w-[1500px]">
         {templates.map((template, index) => (
-          <div key={index}>
-            <TemplateCard
-              title={template.title}
-              thumbnail={template.thumbnail}
-              subtitle={template.subtitle}
-              route={template.route}
-            />
-          </div>
+          <TemplateCard
+            title={template.title}
+            thumbnail={template.thumbnail}
+            subtitle={template.subtitle}
+            route={template.route}
+          />
         ))}
         <div className="flex flex-col items-center justify-center md:w-[35vw] rounded-lg text-white/[0.5] font-sans text-2xl md:text-4xl py-8 md:pb-0">
           <h1 className="text-center">More Coming Soon.</h1>
