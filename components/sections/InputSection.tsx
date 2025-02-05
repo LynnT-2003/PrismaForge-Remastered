@@ -18,16 +18,15 @@ import { FileUpload } from "../ui/file-upload";
 import { useGSAP } from "@gsap/react";
 import { animateWithGsapRight, animateWithGsapBottom } from "@/lib/animation";
 
-interface ImageObject {
-  _id: string;
-  image: string; // Base64-encoded image string
-  prompt: string; // Image generation prompt
-}
-interface InputSectionProps {
-  onNewImage: (newImage: ImageObject) => void;
-}
+// interface ImageObject {
+//   _id: string;
+//   image: string; // Base64-encoded image string
+//   prompt: string; // Image generation prompt
+// }
 
-const InputSection: React.FC<InputSectionProps> = ({ onNewImage }) => {
+// const InputSection: React.FC<InputSectionProps> = ({ onNewImage }) => {
+
+const InputSection = () => {
   useGSAP(() => {
     animateWithGsapBottom("#create", { y: 0, opacity: 1, duration: 1 });
     animateWithGsapRight("#options", { x: 0, opacity: 1, duration: 1 });
@@ -527,7 +526,7 @@ const InputSection: React.FC<InputSectionProps> = ({ onNewImage }) => {
           image: data.output.message,
           prompt: body.input.workflow["6"].inputs.text,
         };
-        onNewImage(newImage); // Call onNewImage with the new image object
+        // onNewImage(newImage); // Call onNewImage with the new image object
       }
 
       // Save the response to MongoDB

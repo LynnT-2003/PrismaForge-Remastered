@@ -33,7 +33,7 @@ export default function Home() {
       if (user) {
         setUser(user);
         console.log("User is now: ", user);
-        fetchSavedImages(user.uid); // Fetch images when the user logs in
+        // fetchSavedImages(user.uid); // Fetch images when the user logs in
       } else {
         setUser(null);
         setImages([]); // Clear images when user signs out
@@ -43,38 +43,38 @@ export default function Home() {
     return () => unsubscribe();
   }, []);
 
-  const fetchSavedImages = async (userId: string) => {
-    console.log("Fetching..?");
-    try {
-      console.log("Fetching from API for user:", userId);
-      const response = await fetch(`/api/savedImages?userId=${userId}`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+  // const fetchSavedImages = async (userId: string) => {
+  //   console.log("Fetching..?");
+  //   try {
+  //     console.log("Fetching from API for user:", userId);
+  //     const response = await fetch(`/api/savedImages?userId=${userId}`, {
+  //       method: "GET",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //     });
 
-      if (!response.ok) {
-        throw new Error("Failed to fetch saved images");
-      }
+  //     if (!response.ok) {
+  //       throw new Error("Failed to fetch saved images");
+  //     }
 
-      const data = await response.json();
-      setImages(data || []); // Now expecting an array of image objects
-      setLoading(false); // Stop loading after fetching images
-      console.log("Fetched images:", data);
-    } catch (error) {
-      console.error("Error fetching saved images:", error);
-      setLoading(false); // Stop loading even if there's an error
-    }
-  };
+  //     const data = await response.json();
+  //     setImages(data || []); // Now expecting an array of image objects
+  //     setLoading(false); // Stop loading after fetching images
+  //     console.log("Fetched images:", data);
+  //   } catch (error) {
+  //     console.error("Error fetching saved images:", error);
+  //     setLoading(false); // Stop loading even if there's an error
+  //   }
+  // };
 
-  const handleNewImage = () => {
-    if (user?.uid) {
-      fetchSavedImages(user.uid); // Fetch images again after a new image is added
-    } else {
-      console.error("User not authenticated");
-    }
-  };
+  // const handleNewImage = () => {
+  //   if (user?.uid) {
+  //     fetchSavedImages(user.uid); // Fetch images again after a new image is added
+  //   } else {
+  //     console.error("User not authenticated");
+  //   }
+  // };
 
   return (
     <div className="relative overflow-x-hidden">
@@ -100,7 +100,7 @@ export default function Home() {
         </div>
 
         <div className="md:pt-[2640px] pt-0">
-          <InputSection onNewImage={handleNewImage} />
+          <InputSection />
         </div>
       </div>
     </div>
