@@ -8,7 +8,7 @@ const TemplatesPage = () => {
       <h1 className="px-12 my-5 md:my-8 text-4xl md:text-5xl text-center font-bold font-sans relative bg-clip-text text-transparent bg-no-repeat bg-gradient-to-r from-purple-500 via-violet-500 to-pink-500 pb-4">
         Generative AI Models
       </h1>
-      <div className="flex flex-wrap justify-center gap-4 w-full max-w-[1500px]">
+      <div className="flex flex-wrap justify-center gap-4 w-full max-w-[1500px] px-5 md:px-12 xl:px-0">
         {models.map((model, index) => (
           <TemplateCard
             key={index}

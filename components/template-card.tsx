@@ -23,22 +23,21 @@ export function TemplateCard({
 }: TemplateCardProps) {
   const router = useRouter();
   return (
-    <div className="bg-[#181818] w-[90vw] md:w-[35%] rounded-lg border-white/[0.1] border">
-      <div className="px-5 flex space-x-7 h-full mr-4">
-        <div className="w-[40%] min-h-[150px] my-5 flex items-center aspect-square relative">
+    <div className="bg-[#181818] w-full px-0 lg:px-5 xl:w-[35%] rounded-lg border-white/[0.1] border">
+      <div className="px-5 flex flex-col lg:flex-row lg:space-x-7 h-full lg:mr-4">
+        <div className="w-full lg:w-[40%] max-h-[150px] lg:max-h-none min-h-[150px] lg:my-5 flex items-center aspect-square relative">
           <Image
             src={thumbnail} // Using the dynamic thumbnail prop
             alt={title} // Using the title for the alt text
             className="rounded-2xl object-cover"
             fill
-            sizes="100vw"
           />
         </div>
 
-        <div className="w-[60%] pt-5 pb-4 my-1 flex flex-col">
+        <div className="lg:w-[60%] pt-5 pb-4 my-1 flex flex-col">
           <div className="h-full flex flex-col">
             <h1 className="font-bold font-sans mb-0 text-base">{title}</h1>
-            <h1 className="font-sans text-base py-4 line-clamp-5">
+            <h1 className="font-sans text-base py-4 line-clamp-8 lg:line-clamp-5">
               {subtitle}
             </h1>
             <Button
