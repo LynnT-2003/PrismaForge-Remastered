@@ -4,7 +4,6 @@ import { cn } from "@/lib/utils";
 import { Button } from "./button";
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { IconUpload } from "@tabler/icons-react";
 import { useDropzone } from "react-dropzone";
 import { Alert, Snackbar } from "@mui/material";
 import {
@@ -118,7 +117,7 @@ export const FileUploadMobile = ({
         localStorage.setItem("uploadedFile", imageSrc);
         console.log("Captured Image: ", imageSrc);
         setIsCameraOpen(false);
-        router.push("/ImageUpload/upload-success");
+        router.push("/image-upload/upload-success");
       }
     }
   };

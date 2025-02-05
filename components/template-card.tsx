@@ -11,6 +11,7 @@ interface TemplateCardProps {
   thumbnail: string;
   subtitle: string;
   route: string;
+  model: string;
 }
 
 export function TemplateCard({
@@ -18,6 +19,7 @@ export function TemplateCard({
   thumbnail,
   subtitle,
   route,
+  model,
 }: TemplateCardProps) {
   const router = useRouter();
   return (
@@ -42,7 +44,10 @@ export function TemplateCard({
             <Button
               size="sm"
               className="mt-4 md:mt-auto"
-              onClick={() => router.push(route)}
+              onClick={() => {
+                router.push(route);
+                localStorage.setItem("model", model);
+              }}
             >
               Try it out <ArrowRight className="w-3 h-5 ml-2" />
             </Button>

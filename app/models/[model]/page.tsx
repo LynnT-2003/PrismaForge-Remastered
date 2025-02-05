@@ -46,7 +46,6 @@ export default function ModelDetailPage({
       if (imageSrc) {
         // setFile(imageSrc); // Set the captured image as the file
         localStorage.setItem("uploadedFile", imageSrc);
-        localStorage.setItem("model", model);
         console.log("Captured Image: ", imageSrc);
         setIsCameraOpen(false);
         router.push("/image-upload/upload-success");
@@ -76,7 +75,7 @@ export default function ModelDetailPage({
       reader.onload = () => {
         const base64String = reader.result as string;
         localStorage.setItem("uploadedFile", base64String);
-        router.push("/ImageUpload/upload-success");
+        router.push("/image-upload/upload-success");
       };
 
       reader.readAsDataURL(file);
@@ -104,7 +103,8 @@ export default function ModelDetailPage({
   const router = useRouter();
 
   return (
-    <div className={`min-h-screen ${model}`}>
+    // add ${model} for dynamic color theme change
+    <div className={`min-h-screen`}>
       <div
         className="h-[100dvh] sm:h-[100vh] w-full overflow-y-hidden sm:py-12"
         style={{

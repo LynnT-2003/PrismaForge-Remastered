@@ -5,7 +5,10 @@ import { ArrowRightIcon, CheckCircle2Icon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { User } from "firebase/auth";
 import { onAuthStateChange } from "@/lib/firebase";
-import { buildRequestBody } from "@/lib/apiServices/imageGeneration";
+import {
+  buildRequestBody,
+  buildStyleForgeRequestBody,
+} from "@/lib/apiServices/imageGeneration";
 import {
   FacebookShareButton,
   FacebookIcon,
@@ -18,6 +21,7 @@ import {
 } from "react-share";
 
 const UploadSuccessScreen = () => {
+  const router = useRouter();
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
@@ -31,11 +35,13 @@ const UploadSuccessScreen = () => {
     });
     return () => unsubscribe();
   }, []);
-  const router = useRouter();
 
   const [loading, setLoading] = useState(false);
   const [base64String, setBase64String] = useState<string | null>(null);
   const [generatedImage, setGeneratedImage] = useState<string | null>(null);
+  const [requestBody, setRequestBody] = useState<Record<string, any> | null>(
+    null
+  );
   const [isCopied, setIsCopied] = useState(false);
   const [model, setModel] = useState<string>("");
 
@@ -78,82 +84,99 @@ const UploadSuccessScreen = () => {
 
     console.log("Trimmed base64 string:", trimmedBased64String);
 
-    const body = buildRequestBody(model, trimmedBased64String);
+    let body: Record<string, any> | null = null;
+
+    switch (model) {
+      case "styleforge":
+        router.push("/special/styleforge");
+        // body = buildStyleForgeRequestBody("", trimmedBased64String);
+        // setRequestBody(body);
+        return;
+      case "christmasforge":
+        body = buildRequestBody(trimmedBased64String);
+        setRequestBody(body);
+        break;
+    }
     console.log("Body:", body);
 
-    try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_RUNPOD_SERVERLESS_ENDPOINT_2}`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${process.env.NEXT_PUBLIC_RUNPOD_API_KEY}`,
-          },
-          body: JSON.stringify(body),
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-
-      const data = await response.json();
-      console.log("Success!");
-      console.log("API Response:", data);
-      setGeneratedImage(data.output.message);
-
-      if (!user) {
-        console.log(
-          "User is not logged in. Skipping image save to both Cloudinary and MongoDB..."
-        );
-      }
-
-      if (data.output.message && user) {
-        const base64Image = data.output.message;
-        console.log("User is logged in. Saving...");
-        const cloudinaryResponse = await fetch("/api/upload-to-cloudinary", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ base64Image: base64Image }),
-        });
-        const cloudinaryData = await cloudinaryResponse.json();
-        console.log("Cloudinary URL:", cloudinaryData.url);
-
-        if (cloudinaryData.url) {
-          // Save the response to MongoDB
-          const mongoBody = {
-            delayTime: data.delayTime,
-            executionTime: data.executionTime,
-            image: cloudinaryData.url,
-            prompt: "PrismaForge Special - Mystical Christmas Themed Portrait.",
-            userId: user?.uid,
-            username: user?.displayName,
-          };
-
-          // // console.log("Lets post to MongoDB later:", data);
-          console.log("Posting", mongoBody);
-          try {
-            const mongoResponse = await fetch("/api/savedImages", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify(mongoBody),
-            });
-            console.log("MongoDB response status:", mongoResponse.status);
-            const mongoResponseBody = await mongoResponse.json();
-            console.log("MongoDB response body:", mongoResponseBody);
-          } catch (error) {
-            console.error("Error saving to MongoDB:", error);
+    if (model !== "styleforge") {
+      try {
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_RUNPOD_SERVERLESS_ENDPOINT_2}`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${process.env.NEXT_PUBLIC_RUNPOD_API_KEY}`,
+            },
+            body: JSON.stringify(body),
           }
+        );
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
         }
+
+        const data = await response.json();
+        console.log("Success!");
+        console.log("API Response:", data);
+        setGeneratedImage(data.output.message);
+
+        if (!user) {
+          console.log(
+            "User is not logged in. Skipping image save to both Cloudinary and MongoDB..."
+          );
+        }
+
+        // TODO: Worry about image history later
+        // if (data.output.message && user) {
+        //   const base64Image = data.output.message;
+        //   console.log("User is logged in. Saving...");
+        //   const cloudinaryResponse = await fetch("/api/upload-to-cloudinary", {
+        //     method: "POST",
+        //     headers: {
+        //       "Content-Type": "application/json",
+        //     },
+        //     body: JSON.stringify({ base64Image: base64Image }),
+        //   });
+        //   const cloudinaryData = await cloudinaryResponse.json();
+        //   console.log("Cloudinary URL:", cloudinaryData.url);
+
+        //   if (cloudinaryData.url) {
+        //     // Save the response to MongoDB
+        //     const mongoBody = {
+        //       delayTime: data.delayTime,
+        //       executionTime: data.executionTime,
+        //       image: cloudinaryData.url,
+        //       prompt:
+        //         "PrismaForge Special - Mystical Christmas Themed Portrait.",
+        //       userId: user?.uid,
+        //       username: user?.displayName,
+        //     };
+
+        //     // // console.log("Lets post to MongoDB later:", data);
+        //     console.log("Posting", mongoBody);
+        //     try {
+        //       const mongoResponse = await fetch("/api/savedImages", {
+        //         method: "POST",
+        //         headers: {
+        //           "Content-Type": "application/json",
+        //         },
+        //         body: JSON.stringify(mongoBody),
+        //       });
+        //       console.log("MongoDB response status:", mongoResponse.status);
+        //       const mongoResponseBody = await mongoResponse.json();
+        //       console.log("MongoDB response body:", mongoResponseBody);
+        //     } catch (error) {
+        //       console.error("Error saving to MongoDB:", error);
+        //     }
+        //   }
+        // }
+      } catch (error) {
+        console.error("Failed to generate image.", error);
       }
-    } catch (error) {
-      console.error("Failed to generate image.", error);
     }
+
     setLoading(false);
   };
 
@@ -173,7 +196,7 @@ const UploadSuccessScreen = () => {
   };
 
   return (
-    <div className="h-screen w-full flex flex-col items-center">
+    <div className={`h-screen w-full flex flex-col items-center `}>
       {!generatedImage && !loading && (
         <div className="sm:w-[35%] h-[90%] flex flex-col items-center justify-center">
           <h1 className="mx-12 text-center text-white pt-[1.7rem] text-2xl font-semibold font-sans motion-preset-slide-right">
@@ -217,7 +240,11 @@ const UploadSuccessScreen = () => {
       )}
 
       {loading && (
-        <div className="w-full flex flex-col items-center justify-center h-full pt-[1.7rem] text-white">
+        <div
+          className={`w-full flex flex-col items-center justify-center h-full pt-[1.7rem] text-white ${
+            model === "styleforge" ? "hidden" : ""
+          }`}
+        >
           <div className="h-full rounded-xl p-[2vh] flex flex-col justify-center items-center">
             <div className="w-[210px] rounded-full flex flex-col justify-center items-center ">
               <h1 className="font-sans font-semibold text-lg text-white">
@@ -270,7 +297,7 @@ const UploadSuccessScreen = () => {
               </Button>
             </div>
           </div>
-          <div className="w-full space-x-[5%] mt-8 flex items-center justify-center">
+          {/* <div className="w-full space-x-[5%] mt-8 flex items-center justify-center">
             <FacebookShareButton
               url="https://prismaforge.vercel.app/"
               hashtag="#prismaforge"
@@ -292,7 +319,7 @@ const UploadSuccessScreen = () => {
             >
               <RedditIcon size={32} round={true} />
             </RedditShareButton>
-          </div>
+          </div> */}
           <div className="flex items-center mt-4">
             <h1 className="text-white font-sans text-[0.5rem] sm:text-xs font-extralight">
               Support us by sharing with family and friends

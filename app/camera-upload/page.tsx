@@ -40,7 +40,7 @@ const TestPage = () => {
         localStorage.setItem("uploadedFile", imageSrc);
         console.log("Captured Image: ", imageSrc);
         setIsCameraOpen(false);
-        router.push("/ImageUpload/upload-success");
+        router.push("/image-upload/upload-success");
       }
     }
   };
@@ -67,7 +67,7 @@ const TestPage = () => {
       reader.onload = () => {
         const base64String = reader.result as string;
         localStorage.setItem("uploadedFile", base64String);
-        router.push("/ImageUpload/upload-success");
+        router.push("/image-upload/upload-success");
       };
 
       reader.readAsDataURL(file);

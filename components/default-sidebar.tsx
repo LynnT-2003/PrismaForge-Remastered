@@ -207,11 +207,14 @@ export function AppSidebar() {
                       <SidebarMenuItem className="my-2 py-1 hover:cursor-pointer transition-all duration-150 ease-linear">
                         <SidebarMenuButton
                           asChild
-                          className="text-lg space-x-2"
-                          onClick={() => router.push("/history")}
+                          className="text-lg space-x-2 text-red-500"
+                          // onClick={() => router.push("/history")}
+                          // TODO: Worry about image history later
                         >
                           <a>
-                            <span className="text-base ml-7">History</span>
+                            <span className="flex items-center gap-2 text-base ml-7">
+                              <LockIcon size={20} /> History
+                            </span>
                           </a>
                         </SidebarMenuButton>
                       </SidebarMenuItem>
@@ -231,17 +234,21 @@ export function AppSidebar() {
                 </CollapsibleContent>
               </Collapsible>
 
-              <SidebarMenuItem
-                className="py-5 hover:cursor-pointer transition-all duration-150 ease-linear"
-                onClick={() => router.push("/history")}
+              {/* <SidebarMenuItem
+                className="py-5 hover:cursor-pointer transition-all duration-150 ease-linear text-red-500"
+                // onClick={() => router.push("/history")}
+                // TODO: Worry about image history later
               >
                 <SidebarMenuButton asChild className="text-lg space-x-2">
                   <a>
-                    <History className="w-64 h-64" />
-                    <span>History</span>
+                    <LockIcon className="w-64 h-64" />
+
+                    <span className="flex items-center gap-2 text-base ml-7">
+                      History
+                    </span>
                   </a>
                 </SidebarMenuButton>
-              </SidebarMenuItem>
+              </SidebarMenuItem> */}
 
               {user ? (
                 <SidebarMenuItem className="py-5 hover:cursor-pointer transition-all duration-150 ease-linear">

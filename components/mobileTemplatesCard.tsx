@@ -65,7 +65,7 @@ const MobileTemplatesCard: React.FC<MobileTemplatesCardProps> = ({
         const base64String = reader.result as string;
         localStorage.setItem("uploadedFile", base64String);
         localStorage.setItem("template", template);
-        router.push("/ImageUpload/upload-success");
+        router.push("/image-upload/upload-success");
       };
 
       reader.readAsDataURL(file);

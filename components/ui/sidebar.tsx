@@ -943,46 +943,46 @@ const Sidebar = React.forwardRef<
   ) => {
     const pathname = usePathname();
 
-    const getSidebarColors = (pathname: string) => {
-      if (pathname === "/models/cartoon") {
-        return {
-          backgroundColor: "bg-blue-500", // Example for /models route
-          textColor: "text-white",
-        };
-      }
+    // const getSidebarColors = (pathname: string) => {
+    //   if (pathname === "/models/cartoon") {
+    //     return {
+    //       backgroundColor: "bg-blue-500", // Example for /models route
+    //       textColor: "text-white",
+    //     };
+    //   }
 
-      if (pathname === "/models/christmas") {
-        return {
-          backgroundColor: "bg-red-800", // Christmas route
-          textColor: "text-white",
-        };
-      }
+    //   if (pathname === "/models/christmas") {
+    //     return {
+    //       backgroundColor: "bg-red-800", // Christmas route
+    //       textColor: "text-white",
+    //     };
+    //   }
 
-      return {
-        backgroundColor: "bg-[#121212]", // Default color
-        textColor: "text-sidebar-foreground",
-      };
-    };
+    //   return {
+    //     backgroundColor: "bg-[#121212]", // Default color
+    //     textColor: "text-sidebar-foreground",
+    //   };
+    // };
 
-    // State to store backgroundColor and textColor
-    const [sidebarColors, setSidebarColors] = React.useState({
-      backgroundColor: "bg-white",
-      textColor: "text-sidebar-foreground",
-    });
+    // // State to store backgroundColor and textColor
+    // const [sidebarColors, setSidebarColors] = React.useState({
+    //   backgroundColor: "bg-white",
+    //   textColor: "text-sidebar-foreground",
+    // });
 
-    React.useEffect(() => {
-      console.log("Pathname: ", pathname);
-      // Update sidebar colors based on pathname
-      const colors = getSidebarColors(pathname);
-      setSidebarColors(colors);
-    }, [pathname]);
+    // React.useEffect(() => {
+    //   console.log("Pathname: ", pathname);
+    //   // Update sidebar colors based on pathname
+    //   const colors = getSidebarColors(pathname);
+    //   setSidebarColors(colors);
+    // }, [pathname]);
 
     const { isMobile, state, openMobile, setOpenMobile } = useSidebar();
 
     // If no model is provided, use default
-    const { backgroundColor, textColor } = model
-      ? getSidebarColors(model)
-      : sidebarColors; // Use the state for colors
+    // const { backgroundColor, textColor } = model
+    //   ? getSidebarColors(model)
+    //   : sidebarColors; // Use the state for colors
 
     if (collapsible === "none") {
       return (
@@ -1058,9 +1058,7 @@ const Sidebar = React.forwardRef<
           <div
             data-sidebar="sidebar"
             className={cn(
-              "flex h-full w-full bg-red-500 flex-col group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:shadow",
-              backgroundColor, // Apply dynamic background color
-              className
+              "flex h-full w-full bg-[#121212] flex-col group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:shadow"
             )}
           >
             {children}
