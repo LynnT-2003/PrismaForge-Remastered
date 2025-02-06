@@ -213,7 +213,7 @@ export function AppSidebar() {
                         >
                           <a>
                             <span className="flex items-center gap-2 text-base ml-7">
-                              <LockIcon size={20} /> History
+                              History <LockIcon size={20} />
                             </span>
                           </a>
                         </SidebarMenuButton>
@@ -222,10 +222,13 @@ export function AppSidebar() {
                       <SidebarMenuItem className="my-2 py-1 hover:cursor-pointer transition-all duration-150 ease-linear">
                         <SidebarMenuButton
                           asChild
-                          className="text-lg space-x-2"
+                          className="text-lg space-x-2 text-red-500"
+                          // TODO:
                         >
                           <a href={""}>
-                            <span className="text-base ml-7">Favorites</span>
+                            <span className="flex items-center gap-2 text-base ml-7">
+                              Favorites <LockIcon size={20} />
+                            </span>
                           </a>
                         </SidebarMenuButton>
                       </SidebarMenuItem>
