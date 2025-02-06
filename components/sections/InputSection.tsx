@@ -716,7 +716,7 @@ const InputSection = () => {
           <div
             className="flex flex-col items-center justify-center group"
             onClick={() => {
-              router.push("/Prompt");
+              router.push("/prompt");
             }}
           >
             <img

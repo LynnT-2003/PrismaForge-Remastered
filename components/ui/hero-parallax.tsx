@@ -51,21 +51,21 @@ export const HeroParallax = ({
   );
 
   const imagesStatic = [
-    "/example/img1.png",
-    "/example/img.png",
-    "/example/img3.png",
-    "/example/img4.png",
-    "/example/img7.png",
-    "/example/img6.png",
-    "/example/img7.png",
-    "/example/img8.png",
-    "/example/img1.png",
-    "/example/img.png",
-    "/example/img4.png",
-    "/example/img7.png",
-    "/example/img6.png",
-    "/example/img.png",
-    "/example/img8.png",
+    "/results/1.png",
+    "/results/2.png",
+    "/results/3.png",
+    "/results/4.png",
+    "/results/7.png",
+    "/results/6.png",
+    "/results/7.png",
+    "/results/8.png",
+    "/results/9.png",
+    "/results/10.png",
+    "/results/11.png",
+    "/results/12.png",
+    "/results/13.png",
+    "/results/14.png",
+    "/results/15.png",
   ];
 
   // Split products array into rows for display
@@ -166,7 +166,7 @@ export const ProductCard = ({
         className="object-cover object-left-top absolute h-full w-full inset-0"
         alt="Image"
       />
-      <div className="absolute inset-0 h-full w-full opacity-0 group-hover/product:opacity-80 bg-black pointer-events-none"></div>
+      <div className="absolute inset-0 h-full w-full opacity-0 group-hover/product:opacity-40 bg-black pointer-events-none"></div>
     </motion.div>
   );
 };
