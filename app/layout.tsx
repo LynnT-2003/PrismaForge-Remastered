@@ -109,14 +109,14 @@ export default function RootLayout({
                   route={""}
                   onClick={""}
                 /> */}
-                <MobileSidebarItem
+                {/* <MobileSidebarItem
                   icon={<History />}
                   text="History"
                   active={false}
                   alert={false}
                   route={"/history"}
                   onClick={""}
-                />
+                /> */}
               </MobileSidebar>
               {children}
             </main>

@@ -1,7 +1,7 @@
 export const models = [
   {
     title: "Christmas Theme",
-    thumbnail: "/templates/christmas.png",
+    thumbnail: "/results/14.png",
     route: "/models/christmasforge",
     model: "christmasforge",
     subtitle: "Add a festive touch to your photos with Christmas designs. ",
