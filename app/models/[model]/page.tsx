@@ -117,7 +117,7 @@ export default function ModelDetailPage({
             ref={webcamRef}
             audio={false}
             screenshotFormat="image/jpeg"
-            className="h-full w-full sm:w-[70%] object-cover bg-red-800 rounded-t-xl transform scale-x-[-1]"
+            className="h-full w-full sm:w-[70%] object-cover bg-[#1e1e1e] rounded-t-xl transform scale-x-[-1]"
           />
 
           <div className="w-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-full flex items-center justify-center">
