@@ -106,7 +106,7 @@ export default function ModelDetailPage({
     // add ${model} for dynamic color theme change
     <div className={`min-h-screen`}>
       <div
-        className="h-[100dvh] sm:h-[100vh] w-full overflow-y-hidden sm:py-12"
+        className="h-[100dvh] md:h-[100vh] w-full overflow-y-hidden sm:py-12"
         style={{
           backgroundColor: "var(--background-primary)",
           color: "var(--text-primary)",
